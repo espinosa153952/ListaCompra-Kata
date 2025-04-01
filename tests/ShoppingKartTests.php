@@ -24,7 +24,7 @@ class ShoppingKartTests extends TestCase
     /**
      * @test
      */
-    public function givenOneProductWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2()
+    public function givenOneProductWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2(): void
     {
         $shoppingCart = new ShoppingCart();
 
@@ -33,5 +33,17 @@ class ShoppingKartTests extends TestCase
         $this->assertEquals("Agua x2", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenTwoProductsWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2SepparatedByCommas(): void
+    {
+        $shoppingCart = new ShoppingCart();
+
+        $shoppingCart->addProduct("Pan", 2);
+        $result = $shoppingCart->addProduct("Agua", 2);
+
+        $this->assertEquals("Pan x2, Agua x2", $result);
+    }
 
 }

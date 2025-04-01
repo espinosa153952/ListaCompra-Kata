@@ -51,5 +51,16 @@ class ShoppingKartTests extends TestCase
         $this->assertEquals("Agua x4", $result);
     }
 
+    /**
+     * @test
+     */
+    public function clearAShoppingCartWithOneProductReturnsNoProducts()
+    {
+        $this->shoppingCart->addProduct("Añadir Agua 1");
+        $result = $this->shoppingCart->addProduct("vaciar");
+
+        $this->assertEquals("", $result);
+    }
+
 
 }

@@ -8,12 +8,11 @@ class ShoppingCart
 
     public function addProduct(string $order): string
     {
-        $explodedOrder = explode(' ', trim($order));
-        $action = $explodedOrder[0];
-        $product = $explodedOrder[1];
-        $quantity = $explodedOrder[2];
-        if(str_contains(strtolower($action), 'añadir'))
+        if(str_contains(strtolower($order), 'añadir'))
         {
+            $explodedOrder = explode(' ', trim($order));
+            $product = $explodedOrder[1];
+            $quantity = $explodedOrder[2];
             if($this->productIsInShoppingCart($product))
             {
                 $this->products[$product] += $quantity;
@@ -26,7 +25,11 @@ class ShoppingCart
             return $this->productsToStringOfProductsWithQuantitiesSepparatedByCommas();
         }
 
-        return "";
+        if(str_contains(strtolower($order), 'vaciar'))
+        {
+            $this->products = [];
+            return "";
+        }
     }
 
     private function productsToStringOfProductsWithQuantitiesSepparatedByCommas(): string

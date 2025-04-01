@@ -4,9 +4,14 @@ namespace Deg540\StringCalculatorPHP;
 
 class ShoppingCart
 {
-
-    public function addProduct(string $string): string
+    private string $products = "";
+    public function addProduct(string $product): string
     {
-        return "Pan x1";
+        if($this->products !== "")
+        {
+            $this->products .= ", ";
+        }
+        $this->products .= "$product x1";
+        return $this->products;
     }
 }

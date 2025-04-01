@@ -10,7 +10,7 @@ class ShoppingKartTests extends TestCase
     /**
      * @test
      */
-    public function givenOneProductReturnsSameProduct()
+    public function givenOneProductReturnsSameProduct(): void
     {
         $shoppingCart = new ShoppingCart();
 
@@ -19,4 +19,16 @@ class ShoppingKartTests extends TestCase
         $this->assertEquals("Pan x1", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenTwoProductReturnsTheProductsSepparatedByCommas(): void
+    {
+        $shoppingCart = new ShoppingCart();
+
+        $shoppingCart->addProduct("Pan");
+        $result = $shoppingCart->addProduct("Leche");
+
+        $this->assertEquals("Pan x1, Leche x1", $result);
+    }
 }

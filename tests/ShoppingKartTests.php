@@ -31,4 +31,20 @@ class ShoppingKartTests extends TestCase
 
         $this->assertEquals("Pan x1, Leche x1", $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenThreeDifferentProductsReturnsTheProductsWithQuantityEqualsToOneSepparatedByCommas(): void
+    {
+        $shoppingCart = new ShoppingCart();
+
+        $shoppingCart->addProduct("Pan");
+        $shoppingCart->addProduct("Leche");
+        $result = $shoppingCart->addProduct("Agua");
+
+        $this->assertEquals("Pan x1, Leche x1, Agua x1", $result);
+    }
+
+
 }

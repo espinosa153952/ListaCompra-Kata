@@ -6,23 +6,35 @@ class ShoppingCart
 {
     private array $products = [];
 
-    public function addProduct(string $product, int $quantity): string
+    public function addProduct(string $order): string
     {
-        if(isset($this->products[$product]))
+        $explodedOrder = explode(' ', trim($order));
+        $action = $explodedOrder[0];
+        $product = $explodedOrder[1];
+        $quantity = $explodedOrder[2];
+        if(str_contains(strtolower($action), 'añadir'))
         {
-            $this->products[$product] += $quantity;
+            if($this->productIsInShoppingCart($product))
+            {
+                $this->products[$product] += $quantity;
+            }
+            else
+            {
+                $this->products[$product] = $quantity;
+            }
+
+            return $this->productsToStringOfProductsWithQuantitiesSepparatedByCommas();
         }
-        else
-        {
-            $this->products[$product] = $quantity;
-        }
 
+        return "";
+    }
 
-
+    private function productsToStringOfProductsWithQuantitiesSepparatedByCommas(): string
+    {
         $productsSepparatedByCommas = "";
-        foreach($this->products as $product => $quantity)
+        foreach ($this->products as $product => $quantity)
         {
-            if($productsSepparatedByCommas !== "")
+            if ($productsSepparatedByCommas !== "")
             {
                 $productsSepparatedByCommas .= ", ";
             }
@@ -30,5 +42,10 @@ class ShoppingCart
         }
 
         return $productsSepparatedByCommas;
+    }
+
+    private function productIsInShoppingCart(string $product): bool
+    {
+        return isset($this->products[$product]);
     }
 }

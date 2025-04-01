@@ -21,9 +21,9 @@ class ShoppingKartTests extends TestCase
      */
     public function givenSomeDifferentProductsWithQuantityEqualsTo1ReturnsTheProductsWithQuantityEqualsToOneSepparatedByCommas(): void
     {
-        $this->shoppingCart->addProduct("Pan", 1);
-        $this->shoppingCart->addProduct("Leche", 1);
-        $result = $this->shoppingCart->addProduct("Agua", 1);
+        $this->shoppingCart->addProduct("Añadir Pan 1");
+        $this->shoppingCart->addProduct("Añadir Leche 1");
+        $result = $this->shoppingCart->addProduct("Añadir Agua 1");
 
         $this->assertEquals("Pan x1, Leche x1, Agua x1", $result);
     }
@@ -33,9 +33,9 @@ class ShoppingKartTests extends TestCase
      */
     public function givenSomeProductsWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2SepparatedByCommas()
     {
-        $this->shoppingCart->addProduct("Pan", 2);
-        $this->shoppingCart->addProduct("Leche", 2);
-        $result = $this->shoppingCart->addProduct("Agua", 2);
+        $this->shoppingCart->addProduct("Añadir Pan 2");
+        $this->shoppingCart->addProduct("Añadir Leche 2");
+        $result = $this->shoppingCart->addProduct("Añadir Agua 2");
 
         $this->assertEquals("Pan x2, Leche x2, Agua x2", $result);
     }
@@ -45,8 +45,8 @@ class ShoppingKartTests extends TestCase
      */
     public function givenAProductThatIsInShoppingCartReturnsTheProductWithQuantityEqualsToTheSumOfQuantities()
     {
-        $this->shoppingCart->addProduct("Agua", 2);
-        $result = $this->shoppingCart->addProduct("Agua", 2);
+        $this->shoppingCart->addProduct("Añadir Agua 2");
+        $result = $this->shoppingCart->addProduct("Añadir Agua 2");
 
         $this->assertEquals("Agua x4", $result);
     }

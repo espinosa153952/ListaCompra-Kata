@@ -40,5 +40,16 @@ class ShoppingKartTests extends TestCase
         $this->assertEquals("Pan x2, Leche x2, Agua x2", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenAProductThatIsInShoppingCartReturnsTheProductWithQuantityEqualsToTheSumOfQuantities()
+    {
+        $this->shoppingCart->addProduct("Agua", 2);
+        $result = $this->shoppingCart->addProduct("Agua", 2);
+
+        $this->assertEquals("Agua x4", $result);
+    }
+
 
 }

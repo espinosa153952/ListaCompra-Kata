@@ -4,16 +4,31 @@ namespace Deg540\StringCalculatorPHP;
 
 class ShoppingCart
 {
-    private string $products = "";
+    private array $products = [];
 
     public function addProduct(string $product, int $quantity): string
     {
-        if($this->products !== "")
+        if(isset($this->products[$product]))
         {
-            $this->products .= ", ";
+            $this->products[$product] += $quantity;
         }
-        $this->products .= "$product x$quantity";
+        else
+        {
+            $this->products[$product] = $quantity;
+        }
 
-        return $this->products;
+
+
+        $productsSepparatedByCommas = "";
+        foreach($this->products as $product => $quantity)
+        {
+            if($productsSepparatedByCommas !== "")
+            {
+                $productsSepparatedByCommas .= ", ";
+            }
+            $productsSepparatedByCommas .= "$product x$quantity";
+        }
+
+        return $productsSepparatedByCommas;
     }
 }

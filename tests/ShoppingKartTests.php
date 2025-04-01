@@ -10,7 +10,7 @@ class ShoppingKartTests extends TestCase
     /**
      * @test
      */
-    public function givenOneProductReturnsSameProduct(): void
+    public function givenOneProductReturnsSameProductWithQuantityEqualsToOne(): void
     {
         $shoppingCart = new ShoppingCart();
 
@@ -22,7 +22,7 @@ class ShoppingKartTests extends TestCase
     /**
      * @test
      */
-    public function givenTwoProductReturnsTheProductsSepparatedByCommas(): void
+    public function givenTwoDifferentProductReturnsTheProductsWithQuantitiesEqualsToOneSepparatedByCommas(): void
     {
         $shoppingCart = new ShoppingCart();
 

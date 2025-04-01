@@ -5,6 +5,7 @@ namespace Deg540\StringCalculatorPHP;
 class ShoppingCart
 {
     private string $products = "";
+
     public function addProduct(string $product): string
     {
         if($this->products !== "")
@@ -12,6 +13,7 @@ class ShoppingCart
             $this->products .= ", ";
         }
         $this->products .= "$product x1";
+
         return $this->products;
     }
 }

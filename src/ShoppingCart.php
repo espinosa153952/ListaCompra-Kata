@@ -6,13 +6,13 @@ class ShoppingCart
 {
     private string $products = "";
 
-    public function addProduct(string $product): string
+    public function addProduct(string $product, int $quantity): string
     {
         if($this->products !== "")
         {
             $this->products .= ", ";
         }
-        $this->products .= "$product x1";
+        $this->products .= "$product x$quantity";
 
         return $this->products;
     }

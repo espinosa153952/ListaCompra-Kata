@@ -14,13 +14,24 @@ class ShoppingKartTests extends TestCase
     {
         $shoppingCart = new ShoppingCart();
 
-        $shoppingCart->addProduct("Pan");
-        $shoppingCart->addProduct("Leche");
-        $result = $shoppingCart->addProduct("Agua");
+        $shoppingCart->addProduct("Pan", 1);
+        $shoppingCart->addProduct("Leche", 1);
+        $result = $shoppingCart->addProduct("Agua", 1);
 
         $this->assertEquals("Pan x1, Leche x1, Agua x1", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenOneProductWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2()
+    {
+        $shoppingCart = new ShoppingCart();
+
+        $result = $shoppingCart->addProduct("Agua", 2);
+
+        $this->assertEquals("Agua x2", $result);
+    }
 
 
 }

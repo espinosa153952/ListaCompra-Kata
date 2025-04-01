@@ -49,4 +49,17 @@ class ShoppingKartTests extends TestCase
         $this->assertEquals("Pan x2, Agua x2", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenThreeProductsWithQuantityEqualsTo2ReturnsTheProductWithQuantityEqualsTo2SepparatedByCommas()
+    {
+        $this->shoppingCart->addProduct("Pan", 2);
+        $this->shoppingCart->addProduct("Leche", 2);
+        $result = $this->shoppingCart->addProduct("Agua", 2);
+
+        $this->assertEquals("Pan x2, Leche x2, Agua x2", $result);
+    }
+
+
 }
